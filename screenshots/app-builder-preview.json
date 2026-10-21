@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:8080/",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "SUNMI T3 家族",
+      "hasCanvas": false,
+      "bodyTextLen": 2057,
+      "bodyTextHash": "11d15e38f02c8edb63f59df47edece3c48a555a80b3852bc25af43f4448a558d",
+      "bodyTextPrefix": "硬件产品 AI及软件服务 解决方案 客户案例 商米之家 开发者 服务与支持 关于商米 SUNMI T3 家族 采购咨询 智能台式",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "SUNMI T3 家族",
+      "hasCanvas": false,
+      "bodyTextLen": 2012,
+      "bodyTextHash": "7933d00370ed0268393b94aa43892ceb7242dc050eb527d52272092964e66459",
+      "bodyTextPrefix": "SUNMI T3 家族 采购咨询 智能台式终端 SUNMI T3 家族 澎湃之芯，优雅之形，高端门店理想之选。 优雅设计， 始终",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/app-builder-preview.json"
+}
