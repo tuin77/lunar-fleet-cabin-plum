@@ -1,30 +1,10 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
+import { Link } from "@tanstack/react-router";
+import { useChrome } from "@/components/site-chrome";
+import { SpecSection } from "@/components/spec-section";
 
 const CDN = "https://file.cdn.sunmi.com/newebsite";
 const img = (path: string) => `${CDN}/${path}`;
-
-const LOGO_PATH =
-  "M5240.470588 0v1024h-240.941176V0h240.941176zM1400.470588 0v703.969882c0 70.716235 57.344 128 128 128h256a128 128 0 0 0 128-128V0H2168.470588v768.060235A256 256 0 0 1 1912.470588 1024h-512A256 256 0 0 1 1144.470588 768V0h256z m1716.705883 0A256 256 0 0 1 3373.176471 256V1024h-256V320.030118a128 128 0 0 0-128-128h-256a128 128 0 0 0-128 128V1024H2349.176471V256A256 256 0 0 1 2605.176471 0zM4312.847059 384V1024h-252.988235V384h252.988235zM4565.835294 0C4705.581176 0 4818.823529 114.627765 4818.823529 256V1024h-252.988235V320.030118c0-70.716235-56.621176-128-126.494118-128h-505.97647c-69.872941 0-126.494118 57.283765-126.494118 128V1024H3553.882353V256C3553.882353 114.627765 3667.124706 0 3806.870588 0zM988.702118 8.071529v190.464l-560.248471-0.180705-63.367529 0.180705a111.134118 111.134118 0 0 0 0 222.268236h396.890353a254.012235 254.012235 0 0 1 253.952 253.952v95.232A254.012235 254.012235 0 0 1 761.976471 1024H27.226353v-190.464l560.248471 0.180706 63.367529-0.240941a111.134118 111.134118 0 1 0 0-222.208H254.012235A254.012235 254.012235 0 0 1 0 357.255529v-95.171764A254.012235 254.012235 0 0 1 254.012235 8.011294h734.689883z";
-
-const NAV = [
-  {
-    label: "硬件产品",
-    items: ["CPad", "交互屏", "移动", "金融", "台式", "自助", "网络", "配件"],
-  },
-  {
-    label: "AI及软件服务",
-    items: ["SUNMI OS", "SUNMI DMP", "应用市场", "SUNMI AI"],
-  },
-  {
-    label: "解决方案",
-    items: ["屏幕管理解决方案", "商捷智慧医疗解决方案", "大程序行业解决方案", "商米 SoftPOS 方案", "生态行业解决方案"],
-  },
-  { label: "客户案例", items: ["零售", "餐饮", "美业", "酒旅"] },
-  { label: "商米之家", items: ["预约体验", "门店查询"] },
-  { label: "开发者", items: ["开发者中心", "API / SDK", "应用市场"] },
-  { label: "服务与支持", items: ["SUNMI Care", "保修政策", "保修查询", "服务网点"] },
-  { label: "关于商米", items: ["关于我们", "联系我们", "人才招聘", "投资者关系", "可持续发展", "廉正与合规"] },
-];
 
 const SCENES = [
   {
@@ -58,14 +38,6 @@ const FOOTER = [
   { title: "关于商米", links: ["关于我们", "联系我们", "人才招聘", "投资者关系", "可持续发展", "廉正与合规"] },
   { title: "品牌中心", links: ["商米之家", "新闻资讯", "客户案例", "品牌资料包"] },
 ];
-
-function Logo() {
-  return (
-    <svg className="logo" viewBox="0 0 5240 1024" aria-label="SUNMI">
-      <path d={LOGO_PATH} fill="currentColor" />
-    </svg>
-  );
-}
 
 function Tile({
   src,
@@ -135,157 +107,31 @@ function Sequence() {
 }
 
 export function T3Page() {
-  const [solid, setSolid] = useState(false);
-  const [menu, setMenu] = useState(false);
+  const chrome = useChrome();
   const [scene, setScene] = useState(0);
   const [acc, setAcc] = useState(0);
-  const [lead, setLead] = useState(false);
-  const [sent, setSent] = useState(false);
   const [video, setVideo] = useState(false);
-  const [chat, setChat] = useState(false);
-  const [legal, setLegal] = useState<null | "law" | "privacy">(null);
-  const [info, setInfo] = useState<string | null>(null);
-  const [form, setForm] = useState({ name: "", phone: "", company: "", need: "采购 SUNMI T3" });
-  const [error, setError] = useState("");
-  const [msgs, setMsgs] = useState([{ from: "bot", text: "您好，我是商米在线客服。想了解 T3 家族配置、配件或门店体验，直接告诉我。" }]);
-  const [draft, setDraft] = useState("");
-
-  useEffect(() => {
-    const onScroll = () => setSolid(window.scrollY > 40);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
-        setLead(false);
-        setVideo(false);
-        setChat(false);
-        setMenu(false);
-        setLegal(null);
-        setInfo(null);
-      }
+      if (e.key === "Escape") setVideo(false);
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, []);
-
-  const openInfo = (label: string) => {
-    setMenu(false);
-    setInfo(label);
-  };
-
-  const submitLead = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!form.name.trim() || !/^1\d{10}$/.test(form.phone) || !form.company.trim()) {
-      setError("请填写姓名、11 位手机号和公司名称。");
-      return;
-    }
-    const leads = JSON.parse(localStorage.getItem("t3-leads") || "[]");
-    leads.push({ ...form, at: new Date().toISOString() });
-    localStorage.setItem("t3-leads", JSON.stringify(leads));
-    setError("");
-    setSent(true);
-  };
-
-  const sendChat = (e: React.FormEvent) => {
-    e.preventDefault();
-    const text = draft.trim();
-    if (!text) return;
-    const reply = /价|多少|报价/.test(text)
-      ? "T3 家族按配置报价，留下联系方式后销售顾问会在工作时间内回复。"
-      : /配件|钱箱|读卡|脚垫/.test(text)
-        ? "可选配件包括 MSR 读卡器、打印机挡板、整机加高脚垫和钱箱转接板，均已上市。"
-        : /预约|商米之家|体验/.test(text)
-          ? "商米之家已陆续开放三代新品场景体验，可在页面点击「前往预约」。"
-          : "已收到。T3 搭载高通 8 核、最高 2.4GHz，支持三屏异显、主屏翻转与 SUNMI OS 4.0。需要我帮您发起采购咨询吗？";
-    setMsgs((m) => [...m, { from: "me", text }, { from: "bot", text: reply }]);
-    setDraft("");
-  };
 
   const current = SCENES[scene];
   const visibleAcc = [0, 1, 2].map((i) => ACCESSORIES[(acc + i) % ACCESSORIES.length]);
 
   return (
     <main>
-      <header className={`site-header ${solid ? "is-solid" : ""}`}>
-        <div className="topbar">
-          <div className="brand-row">
-            <a href="#top" aria-label="商米首页">
-              <Logo />
-            </a>
-            <nav className="nav-row" aria-label="主导航">
-              {NAV.map((group) => (
-                <div className="nav-item" key={group.label}>
-                  <button className="nav-btn" type="button">
-                    {group.label}
-                  </button>
-                  <div className="mega">
-                    {group.items.map((item) => (
-                      <button key={item} type="button" onClick={() => openInfo(item)}>
-                        {item}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </nav>
-          </div>
-          <div className="top-right">
-            <span className="divider" />
-            <button className="icon-btn desktop-only" type="button" aria-label="更多站点" onClick={() => openInfo("更多站点")}>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <circle cx="5" cy="5" r="2" />
-                <circle cx="12" cy="5" r="2" />
-                <circle cx="19" cy="5" r="2" />
-                <circle cx="5" cy="12" r="2" />
-                <circle cx="12" cy="12" r="2" />
-                <circle cx="19" cy="12" r="2" />
-                <circle cx="5" cy="19" r="2" />
-                <circle cx="12" cy="19" r="2" />
-                <circle cx="19" cy="19" r="2" />
-              </svg>
-            </button>
-            <button className="menu-toggle" type="button" aria-label="打开菜单" onClick={() => setMenu(true)}>
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-                <path d="M4 7h16M4 12h16M4 17h16" />
-              </svg>
-            </button>
-          </div>
-        </div>
-        <div className="subbar">
-          <div className="subbar-inner">
-            <span className="sub-title">SUNMI T3 家族</span>
-            <button className="ghost" type="button" onClick={() => { setSent(false); setLead(true); }}>
-              采购咨询
-            </button>
-          </div>
-        </div>
-      </header>
-
-      {menu ? (
-        <div className="sheet">
-          <header>
-            <Logo />
-            <button type="button" onClick={() => setMenu(false)} aria-label="关闭">
-              ×
-            </button>
-          </header>
-          <nav>
-            {NAV.map((g) => (
-              <button key={g.label} type="button" onClick={() => openInfo(g.label)}>
-                {g.label}
-              </button>
-            ))}
-            <button type="button" onClick={() => { setMenu(false); setLead(true); }}>
-              采购咨询
-            </button>
-          </nav>
-        </div>
-      ) : null}
-
+      <nav className="crumb wrap" aria-label="面包屑">
+        <Link to="/">首页</Link>
+        <span>/</span>
+        <Link to="/products">硬件产品</Link>
+        <span>/</span>
+        <span>SUNMI T3 家族</span>
+      </nav>
       <section className="hero" id="top" style={{ backgroundImage: `url(${img("products/t3-family/lg/p1-bg.jpg")})` }}>
         <div className="wrap hero-copy">
           <span className="eyebrow">智能台式终端</span>
@@ -648,7 +494,7 @@ export function T3Page() {
               </div>
             </article>
           </div>
-          <button className="ghost more" type="button" onClick={() => openInfo("SUNMI OS 4.0")}>
+          <button className="ghost more" type="button" onClick={() => chrome.openInfo("SUNMI OS 4.0")}>
             了解更多
           </button>
         </div>
@@ -681,7 +527,7 @@ export function T3Page() {
               </article>
             ))}
           </div>
-          <button className="ghost more" type="button" onClick={() => openInfo("SUNMI DMP")}>
+          <button className="ghost more" type="button" onClick={() => chrome.openInfo("SUNMI DMP")}>
             了解更多
           </button>
         </div>
@@ -700,7 +546,7 @@ export function T3Page() {
                 <br />
                 共建开放生态。
               </p>
-              <button className="linkish" type="button" onClick={() => openInfo("SUNMI 开发者中心")}>
+              <button className="linkish" type="button" onClick={() => chrome.openInfo("SUNMI 开发者中心")}>
                 了解更多 →
               </button>
             </Tile>
@@ -711,7 +557,7 @@ export function T3Page() {
                 <img src={img("products/d3-family/icon/p19-2-1.png")} alt="" style={{ height: 32 }} />
                 <img src={img("products/d3-family/icon/p19-2-2.png")} alt="" style={{ height: 32 }} />
               </div>
-              <button className="linkish" type="button" onClick={() => openInfo("SUNMI Care")}>
+              <button className="linkish" type="button" onClick={() => chrome.openInfo("SUNMI Care")}>
                 了解更多 →
               </button>
             </Tile>
@@ -728,11 +574,7 @@ export function T3Page() {
               className="ghost"
               style={{ marginTop: 28, color: "#222", borderColor: "#222" }}
               type="button"
-              onClick={() => {
-                setForm((f) => ({ ...f, need: "预约商米之家体验" }));
-                setSent(false);
-                setLead(true);
-              }}
+              onClick={() => chrome.openLead("预约商米之家体验")}
             >
               前往预约 →
             </button>
@@ -741,6 +583,8 @@ export function T3Page() {
         </div>
       </section>
 
+      <SpecSection />
+
       <section className="disclaimer">
         <div className="wrap">
           <p>1. 以上所有数据，如未特别说明，均来自商米实验室，若实际使用数据与以上数据存在差异，以实际使用数据为准。</p>
@@ -748,105 +592,13 @@ export function T3Page() {
           <p>3. 本产品介绍内容依照产品上市时现有信息制作，由于产品版本升级或其他原因，其内容有可能变更。商米保留在没有任何通知或者提示的情况下对商米官网的产品及内容进行修改的权利。</p>
           <p>
             4. 商米非常重视保护每一位用户个人信息和隐私。保护每一款设备的运营数据的安全，也是商米产品设计的重中之重。更多信息，请访问{" "}
-            <button type="button" onClick={() => setLegal("privacy")}>
+            <button type="button" onClick={() => chrome.openLegal("privacy")}>
               SUNMI 隐私声明和服务条款
             </button>
             。
           </p>
         </div>
       </section>
-
-      <footer className="footer">
-        <div className="wrap">
-          <div className="foot-grid">
-            {FOOTER.map((col) => (
-              <div key={col.title}>
-                <h4>{col.title}</h4>
-                {col.links.map((link) => (
-                  <button key={link} className="link" type="button" onClick={() => openInfo(link)}>
-                    {link}
-                  </button>
-                ))}
-              </div>
-            ))}
-            <div>
-              <div className="phone">400-6666-509</div>
-              <div className="hours">周一到周日 0:00-24:00</div>
-              <button className="ghost" type="button" onClick={() => { setSent(false); setLead(true); }}>
-                免费咨询
-              </button>
-            </div>
-          </div>
-          <div className="foot-bottom">
-            <div className="foot-meta">
-              <span>© 2026 上海商米科技集团股份有限公司 版权所有</span>
-              <button className="link" type="button" onClick={() => setLegal("law")}>
-                法律文件
-              </button>
-              <button className="link" type="button" onClick={() => setLegal("privacy")}>
-                隐私与安全
-              </button>
-              <span>沪ICP备 16006543</span>
-              <span style={{ display: "inline-flex", gap: 4, alignItems: "center" }}>
-                <img src={img("home/icon-beian.png")} alt="" />
-                沪公安网备 31011002003742
-              </span>
-              <span>反诈劝阻电话：962110</span>
-            </div>
-            <div className="socials">
-              <img src={img("chinashop-2024/lg/wechat.png")} alt="微信" />
-              <img src={img("chinashop-2024/lg/tiktok.png")} alt="抖音" />
-            </div>
-          </div>
-        </div>
-      </footer>
-
-      <div className="floaters">
-        <button className="floater primary" type="button" onClick={() => { setSent(false); setLead(true); }}>
-          采购咨询
-        </button>
-        <button className="floater" type="button" onClick={() => setChat(true)}>
-          在线客服
-        </button>
-      </div>
-
-      {lead ? (
-        <div className="mask" onClick={() => setLead(false)}>
-          <div className="dialog" onClick={(e) => e.stopPropagation()} role="dialog" aria-modal="true" aria-labelledby="lead-title">
-            <button className="x" type="button" onClick={() => setLead(false)} aria-label="关闭">
-              ×
-            </button>
-            {sent ? (
-              <div className="ok">
-                <strong>提交成功</strong>
-                <p>销售顾问将尽快与您联系。您也可以拨打 400-6666-509。</p>
-              </div>
-            ) : (
-              <form onSubmit={submitLead}>
-                <h3 id="lead-title">采购咨询</h3>
-                <p className="hint">留下信息，了解 SUNMI T3 家族配置与报价。</p>
-                <label htmlFor="name">姓名</label>
-                <input id="name" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} />
-                <label htmlFor="phone">手机号</label>
-                <input id="phone" inputMode="numeric" value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} />
-                <label htmlFor="company">公司</label>
-                <input id="company" value={form.company} onChange={(e) => setForm({ ...form, company: e.target.value })} />
-                <label htmlFor="need">需求</label>
-                <select id="need" value={form.need} onChange={(e) => setForm({ ...form, need: e.target.value })}>
-                  <option>采购 SUNMI T3</option>
-                  <option>预约商米之家体验</option>
-                  <option>了解配件与金融副屏</option>
-                  <option>成为合作伙伴</option>
-                </select>
-                {error ? <p className="hint" style={{ color: "#ff6000" }}>{error}</p> : null}
-                <button className="submit" type="submit">
-                  提交
-                </button>
-              </form>
-            )}
-          </div>
-        </div>
-      ) : null}
 
       {video ? (
         <div className="mask" onClick={() => setVideo(false)}>

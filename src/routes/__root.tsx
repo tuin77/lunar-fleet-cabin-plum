@@ -1,6 +1,7 @@
 import { createRootRoute, HeadContent, Outlet, Scripts } from "@tanstack/react-router";
 import { AuthProvider } from "@/lib/auth/provider";
 import { PreviewHostBridge } from "@/components/preview-host-bridge";
+import { SiteChrome } from "@/components/site-chrome";
 import appCss from "../styles.css?url";
 
 export const Route = createRootRoute({
@@ -8,11 +9,13 @@ export const Route = createRootRoute({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "SUNMI T3 家族" },
+      { title: "商米科技 - BIoT 开启商业4.0" },
       {
         name: "description",
-        content: "澎湃之芯，优雅之形，高端门店理想之选。SUNMI T3 智能台式终端。",
+        content: "商米科技，BIoT 开启商业 4.0。智能台式、移动与金融终端，以及 SUNMI OS、DMP 与行业解决方案。",
       },
+      { name: "keywords", content: "商米,SUNMI,智能收银,台式终端,T3家族,SUNMI OS,BIoT" },
+      { name: "robots", content: "index,follow,max-image-preview:large" },
       { name: "theme-color", content: "#0c0d10" },
     ],
     links: [
@@ -34,7 +37,9 @@ export const Route = createRootRoute({
       <body>
         <PreviewHostBridge />
         <AuthProvider>
-          <Outlet />
+          <SiteChrome>
+            <Outlet />
+          </SiteChrome>
         </AuthProvider>
         <Scripts />
       </body>
