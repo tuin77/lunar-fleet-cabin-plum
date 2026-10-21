@@ -1,21 +1,26 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { T3Page } from "@/components/t3-page";
+import { SPEC_TABS } from "@/data/catalog";
 import { jsonLdScript } from "@/lib/seo";
 
 const productLd = {
   "@context": "https://schema.org",
-  "@type": "Product",
+  "@type": "ProductGroup",
   name: "SUNMI T3 家族",
   category: "智能台式终端",
   brand: { "@type": "Brand", name: "SUNMI" },
   description: "澎湃之芯，优雅之形。SUNMI T3 家族智能台式终端，支持三屏异显、主屏翻转、SUNMI OS 4.0。",
   url: "/t3-family",
-  additionalProperty: [
-    { "@type": "PropertyValue", name: "处理器", value: "八核，最高至 2.4GHz" },
-    { "@type": "PropertyValue", name: "操作系统", value: "SUNMI OS 4.0（基于 Android 13）" },
-    { "@type": "PropertyValue", name: "内存", value: "4GB RAM + 64GB ROM" },
-    { "@type": "PropertyValue", name: "触摸屏", value: "15.6 英寸 FHD 1920×1080" },
-  ],
+  hasVariant: SPEC_TABS.map((tab) => ({
+    "@type": "Product",
+    name: `SUNMI ${tab.label}`,
+    sku: tab.id,
+    additionalProperty: tab.rows.map((row) => ({
+      "@type": "PropertyValue",
+      name: row.title,
+      value: row.desc.replaceAll("\n", "；"),
+    })),
+  })),
 };
 
 export const Route = createFileRoute("/t3-family")({

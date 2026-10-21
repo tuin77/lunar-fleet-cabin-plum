@@ -1,86 +1,84 @@
 import { i as __toESM } from "../_runtime.mjs";
-import { K as require_react, b as require_jsx_runtime } from "../_libs/@tanstack/react-router+[...].mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/routes-Dvv6y8d8.js
+import { J as require_react, S as require_jsx_runtime, b as Link } from "../_libs/@tanstack/react-router+[...].mjs";
+import { a as SPEC_APPENDIX, n as useChrome, o as SPEC_TABS, s as SPEC_TITLE } from "./router-COTB8C6d.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/t3-family-DOoPv10w.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
+function SpecSection() {
+	const [tab, setTab] = (0, import_react.useState)(0);
+	const current = SPEC_TABS[tab];
+	const panelId = `spec-panel-${current.id}`;
+	const move = (dir) => setTab((n) => (n + dir + SPEC_TABS.length) % SPEC_TABS.length);
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("section", {
+		className: "tech",
+		id: "specs",
+		"aria-labelledby": "spec-title",
+		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			className: "wrap",
+			children: [
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
+					id: "spec-title",
+					children: SPEC_TITLE
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+					className: "tech-lead",
+					children: "T3 为无打印主机，T3 80MM 内置 80mm 高速热敏打印机。参数随型号切换。"
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+					className: "tech-tabs",
+					role: "tablist",
+					"aria-label": "型号",
+					onKeyDown: (e) => {
+						if (e.key === "ArrowRight") {
+							e.preventDefault();
+							move(1);
+						}
+						if (e.key === "ArrowLeft") {
+							e.preventDefault();
+							move(-1);
+						}
+					},
+					children: SPEC_TABS.map((item, i) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+						type: "button",
+						role: "tab",
+						id: `spec-tab-${item.id}`,
+						"aria-selected": i === tab,
+						"aria-controls": panelId,
+						tabIndex: i === tab ? 0 : -1,
+						className: i === tab ? "is-on" : "",
+						onClick: () => setTab(i),
+						children: item.label
+					}, item.id))
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("dl", {
+					className: "tech-grid",
+					role: "tabpanel",
+					id: panelId,
+					"aria-labelledby": `spec-tab-${current.id}`,
+					children: current.rows.map((row) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: row.span > 1 ? "span2" : void 0,
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("dt", { children: row.title }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("dd", { children: row.desc })]
+					}, row.title))
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
+					className: "tech-sub",
+					children: SPEC_APPENDIX
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("ul", {
+					className: "tech-files",
+					children: current.downloads.map((file) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("li", { children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
+						href: file.href,
+						target: "_blank",
+						rel: "noreferrer",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: file.title }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: file.desc })]
+					}) }, file.title))
+				})
+			]
+		})
+	});
+}
 var CDN = "https://file.cdn.sunmi.com/newebsite";
 var img = (path) => `${CDN}/${path}`;
-var LOGO_PATH = "M5240.470588 0v1024h-240.941176V0h240.941176zM1400.470588 0v703.969882c0 70.716235 57.344 128 128 128h256a128 128 0 0 0 128-128V0H2168.470588v768.060235A256 256 0 0 1 1912.470588 1024h-512A256 256 0 0 1 1144.470588 768V0h256z m1716.705883 0A256 256 0 0 1 3373.176471 256V1024h-256V320.030118a128 128 0 0 0-128-128h-256a128 128 0 0 0-128 128V1024H2349.176471V256A256 256 0 0 1 2605.176471 0zM4312.847059 384V1024h-252.988235V384h252.988235zM4565.835294 0C4705.581176 0 4818.823529 114.627765 4818.823529 256V1024h-252.988235V320.030118c0-70.716235-56.621176-128-126.494118-128h-505.97647c-69.872941 0-126.494118 57.283765-126.494118 128V1024H3553.882353V256C3553.882353 114.627765 3667.124706 0 3806.870588 0zM988.702118 8.071529v190.464l-560.248471-0.180705-63.367529 0.180705a111.134118 111.134118 0 0 0 0 222.268236h396.890353a254.012235 254.012235 0 0 1 253.952 253.952v95.232A254.012235 254.012235 0 0 1 761.976471 1024H27.226353v-190.464l560.248471 0.180706 63.367529-0.240941a111.134118 111.134118 0 1 0 0-222.208H254.012235A254.012235 254.012235 0 0 1 0 357.255529v-95.171764A254.012235 254.012235 0 0 1 254.012235 8.011294h734.689883z";
-var NAV = [
-	{
-		label: "硬件产品",
-		items: [
-			"CPad",
-			"交互屏",
-			"移动",
-			"金融",
-			"台式",
-			"自助",
-			"网络",
-			"配件"
-		]
-	},
-	{
-		label: "AI及软件服务",
-		items: [
-			"SUNMI OS",
-			"SUNMI DMP",
-			"应用市场",
-			"SUNMI AI"
-		]
-	},
-	{
-		label: "解决方案",
-		items: [
-			"屏幕管理解决方案",
-			"商捷智慧医疗解决方案",
-			"大程序行业解决方案",
-			"商米 SoftPOS 方案",
-			"生态行业解决方案"
-		]
-	},
-	{
-		label: "客户案例",
-		items: [
-			"零售",
-			"餐饮",
-			"美业",
-			"酒旅"
-		]
-	},
-	{
-		label: "商米之家",
-		items: ["预约体验", "门店查询"]
-	},
-	{
-		label: "开发者",
-		items: [
-			"开发者中心",
-			"API / SDK",
-			"应用市场"
-		]
-	},
-	{
-		label: "服务与支持",
-		items: [
-			"SUNMI Care",
-			"保修政策",
-			"保修查询",
-			"服务网点"
-		]
-	},
-	{
-		label: "关于商米",
-		items: [
-			"关于我们",
-			"联系我们",
-			"人才招聘",
-			"投资者关系",
-			"可持续发展",
-			"廉正与合规"
-		]
-	}
-];
 var SCENES = [
 	{
 		title: "精品店",
@@ -132,71 +130,6 @@ var ACCESSORIES = [
 		file: "p9-4.jpg"
 	}
 ];
-var FOOTER = [
-	{
-		title: "硬件产品",
-		links: [
-			"CPad",
-			"交互屏",
-			"移动",
-			"金融",
-			"台式",
-			"自助",
-			"网络",
-			"配件"
-		]
-	},
-	{
-		title: "服务与支持",
-		links: [
-			"SUNMI Care",
-			"保修政策",
-			"保修查询",
-			"服务网点"
-		]
-	},
-	{
-		title: "解决方案",
-		links: [
-			"屏幕管理解决方案",
-			"商捷智慧医疗解决方案",
-			"大程序行业解决方案",
-			"商米 SoftPOS 方案",
-			"生态行业解决方案"
-		]
-	},
-	{
-		title: "关于商米",
-		links: [
-			"关于我们",
-			"联系我们",
-			"人才招聘",
-			"投资者关系",
-			"可持续发展",
-			"廉正与合规"
-		]
-	},
-	{
-		title: "品牌中心",
-		links: [
-			"商米之家",
-			"新闻资讯",
-			"客户案例",
-			"品牌资料包"
-		]
-	}
-];
-function Logo() {
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("svg", {
-		className: "logo",
-		viewBox: "0 0 5240 1024",
-		"aria-label": "SUNMI",
-		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("path", {
-			d: LOGO_PATH,
-			fill: "currentColor"
-		})
-	});
-}
 function Tile({ src, video, className, children }) {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("article", {
 		className: `tile ${className ?? ""}`,
@@ -257,85 +190,17 @@ function Sequence() {
 	});
 }
 function T3Page() {
-	const [solid, setSolid] = (0, import_react.useState)(false);
-	const [menu, setMenu] = (0, import_react.useState)(false);
+	const chrome = useChrome();
 	const [scene, setScene] = (0, import_react.useState)(0);
 	const [acc, setAcc] = (0, import_react.useState)(0);
-	const [lead, setLead] = (0, import_react.useState)(false);
-	const [sent, setSent] = (0, import_react.useState)(false);
 	const [video, setVideo] = (0, import_react.useState)(false);
-	const [chat, setChat] = (0, import_react.useState)(false);
-	const [legal, setLegal] = (0, import_react.useState)(null);
-	const [info, setInfo] = (0, import_react.useState)(null);
-	const [form, setForm] = (0, import_react.useState)({
-		name: "",
-		phone: "",
-		company: "",
-		need: "采购 SUNMI T3"
-	});
-	const [error, setError] = (0, import_react.useState)("");
-	const [msgs, setMsgs] = (0, import_react.useState)([{
-		from: "bot",
-		text: "您好，我是商米在线客服。想了解 T3 家族配置、配件或门店体验，直接告诉我。"
-	}]);
-	const [draft, setDraft] = (0, import_react.useState)("");
-	(0, import_react.useEffect)(() => {
-		const onScroll = () => setSolid(window.scrollY > 40);
-		onScroll();
-		window.addEventListener("scroll", onScroll, { passive: true });
-		return () => window.removeEventListener("scroll", onScroll);
-	}, []);
 	(0, import_react.useEffect)(() => {
 		const onKey = (e) => {
-			if (e.key === "Escape") {
-				setLead(false);
-				setVideo(false);
-				setChat(false);
-				setMenu(false);
-				setLegal(null);
-				setInfo(null);
-			}
+			if (e.key === "Escape") setVideo(false);
 		};
 		window.addEventListener("keydown", onKey);
 		return () => window.removeEventListener("keydown", onKey);
 	}, []);
-	const openInfo = (label) => {
-		setMenu(false);
-		setInfo(label);
-	};
-	const submitLead = (e) => {
-		e.preventDefault();
-		if (!form.name.trim() || !/^1\d{10}$/.test(form.phone) || !form.company.trim()) {
-			setError("请填写姓名、11 位手机号和公司名称。");
-			return;
-		}
-		const leads = JSON.parse(localStorage.getItem("t3-leads") || "[]");
-		leads.push({
-			...form,
-			at: (/* @__PURE__ */ new Date()).toISOString()
-		});
-		localStorage.setItem("t3-leads", JSON.stringify(leads));
-		setError("");
-		setSent(true);
-	};
-	const sendChat = (e) => {
-		e.preventDefault();
-		const text = draft.trim();
-		if (!text) return;
-		const reply = /价|多少|报价/.test(text) ? "T3 家族按配置报价，留下联系方式后销售顾问会在工作时间内回复。" : /配件|钱箱|读卡|脚垫/.test(text) ? "可选配件包括 MSR 读卡器、打印机挡板、整机加高脚垫和钱箱转接板，均已上市。" : /预约|商米之家|体验/.test(text) ? "商米之家已陆续开放三代新品场景体验，可在页面点击「前往预约」。" : "已收到。T3 搭载高通 8 核、最高 2.4GHz，支持三屏异显、主屏翻转与 SUNMI OS 4.0。需要我帮您发起采购咨询吗？";
-		setMsgs((m) => [
-			...m,
-			{
-				from: "me",
-				text
-			},
-			{
-				from: "bot",
-				text: reply
-			}
-		]);
-		setDraft("");
-	};
 	const current = SCENES[scene];
 	const visibleAcc = [
 		0,
@@ -343,155 +208,23 @@ function T3Page() {
 		2
 	].map((i) => ACCESSORIES[(acc + i) % ACCESSORIES.length]);
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("main", { children: [
-		/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("header", {
-			className: `site-header ${solid ? "is-solid" : ""}`,
-			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "topbar",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: "brand-row",
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("a", {
-						href: "#top",
-						"aria-label": "商米首页",
-						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Logo, {})
-					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("nav", {
-						className: "nav-row",
-						"aria-label": "主导航",
-						children: NAV.map((group) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "nav-item",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
-								className: "nav-btn",
-								type: "button",
-								children: group.label
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-								className: "mega",
-								children: group.items.map((item) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
-									type: "button",
-									onClick: () => openInfo(item),
-									children: item
-								}, item))
-							})]
-						}, group.label))
-					})]
-				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: "top-right",
-					children: [
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "divider" }),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
-							className: "icon-btn desktop-only",
-							type: "button",
-							"aria-label": "更多站点",
-							onClick: () => openInfo("更多站点"),
-							children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("svg", {
-								width: "18",
-								height: "18",
-								viewBox: "0 0 24 24",
-								fill: "currentColor",
-								"aria-hidden": "true",
-								children: [
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("circle", {
-										cx: "5",
-										cy: "5",
-										r: "2"
-									}),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("circle", {
-										cx: "12",
-										cy: "5",
-										r: "2"
-									}),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("circle", {
-										cx: "19",
-										cy: "5",
-										r: "2"
-									}),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("circle", {
-										cx: "5",
-										cy: "12",
-										r: "2"
-									}),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("circle", {
-										cx: "12",
-										cy: "12",
-										r: "2"
-									}),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("circle", {
-										cx: "19",
-										cy: "12",
-										r: "2"
-									}),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("circle", {
-										cx: "5",
-										cy: "19",
-										r: "2"
-									}),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("circle", {
-										cx: "12",
-										cy: "19",
-										r: "2"
-									}),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("circle", {
-										cx: "19",
-										cy: "19",
-										r: "2"
-									})
-								]
-							})
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
-							className: "menu-toggle",
-							type: "button",
-							"aria-label": "打开菜单",
-							onClick: () => setMenu(true),
-							children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("svg", {
-								width: "22",
-								height: "22",
-								viewBox: "0 0 24 24",
-								fill: "none",
-								stroke: "currentColor",
-								strokeWidth: "1.8",
-								children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("path", { d: "M4 7h16M4 12h16M4 17h16" })
-							})
-						})
-					]
-				})]
-			}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-				className: "subbar",
-				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: "subbar-inner",
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-						className: "sub-title",
-						children: "SUNMI T3 家族"
-					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
-						className: "ghost",
-						type: "button",
-						onClick: () => {
-							setSent(false);
-							setLead(true);
-						},
-						children: "采购咨询"
-					})]
-				})
-			})]
+		/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("nav", {
+			className: "crumb wrap",
+			"aria-label": "面包屑",
+			children: [
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, {
+					to: "/",
+					children: "首页"
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "/" }),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, {
+					to: "/products",
+					children: "硬件产品"
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "/" }),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "SUNMI T3 家族" })
+			]
 		}),
-		menu ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-			className: "sheet",
-			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("header", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Logo, {}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
-				type: "button",
-				onClick: () => setMenu(false),
-				"aria-label": "关闭",
-				children: "×"
-			})] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("nav", { children: [NAV.map((g) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
-				type: "button",
-				onClick: () => openInfo(g.label),
-				children: g.label
-			}, g.label)), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
-				type: "button",
-				onClick: () => {
-					setMenu(false);
-					setLead(true);
-				},
-				children: "采购咨询"
-			})] })]
-		}) : null,
 		/* @__PURE__ */ (0, import_jsx_runtime.jsx)("section", {
 			className: "hero",
 			id: "top",
@@ -507,6 +240,18 @@ function T3Page() {
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 						className: "lead",
 						children: "澎湃之芯，优雅之形，高端门店理想之选。"
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "hero-actions",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("a", {
+							className: "ghost",
+							href: "#specs",
+							children: "技术规格"
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("a", {
+							className: "ghost",
+							href: "#scenes",
+							children: "场景应用"
+						})]
 					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 						className: "badge-row",
@@ -1078,7 +823,7 @@ function T3Page() {
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
 						className: "ghost more",
 						type: "button",
-						onClick: () => openInfo("SUNMI OS 4.0"),
+						onClick: () => chrome.openInfo("SUNMI OS 4.0"),
 						children: "了解更多"
 					})
 				]
@@ -1172,7 +917,7 @@ function T3Page() {
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
 						className: "ghost more",
 						type: "button",
-						onClick: () => openInfo("SUNMI DMP"),
+						onClick: () => chrome.openInfo("SUNMI DMP"),
 						children: "了解更多"
 					})
 				]
@@ -1201,7 +946,7 @@ function T3Page() {
 							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
 								className: "linkish",
 								type: "button",
-								onClick: () => openInfo("SUNMI 开发者中心"),
+								onClick: () => chrome.openInfo("SUNMI 开发者中心"),
 								children: "了解更多 →"
 							})
 						]
@@ -1231,7 +976,7 @@ function T3Page() {
 							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
 								className: "linkish",
 								type: "button",
-								onClick: () => openInfo("SUNMI Care"),
+								onClick: () => chrome.openInfo("SUNMI Care"),
 								children: "了解更多 →"
 							})
 						]
@@ -1263,14 +1008,7 @@ function T3Page() {
 								borderColor: "#222"
 							},
 							type: "button",
-							onClick: () => {
-								setForm((f) => ({
-									...f,
-									need: "预约商米之家体验"
-								}));
-								setSent(false);
-								setLead(true);
-							},
+							onClick: () => chrome.openLead("预约商米之家体验"),
 							children: "前往预约 →"
 						})
 					]
@@ -1280,6 +1018,7 @@ function T3Page() {
 				})]
 			})
 		}),
+		/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SpecSection, {}),
 		/* @__PURE__ */ (0, import_jsx_runtime.jsx)("section", {
 			className: "disclaimer",
 			children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
@@ -1293,7 +1032,7 @@ function T3Page() {
 						" ",
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
 							type: "button",
-							onClick: () => setLegal("privacy"),
+							onClick: () => chrome.openLegal("privacy"),
 							children: "SUNMI 隐私声明和服务条款"
 						}),
 						"。"
@@ -1301,196 +1040,6 @@ function T3Page() {
 				]
 			})
 		}),
-		/* @__PURE__ */ (0, import_jsx_runtime.jsx)("footer", {
-			className: "footer",
-			children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "wrap",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: "foot-grid",
-					children: [FOOTER.map((col) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h4", { children: col.title }), col.links.map((link) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
-						className: "link",
-						type: "button",
-						onClick: () => openInfo(link),
-						children: link
-					}, link))] }, col.title)), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-							className: "phone",
-							children: "400-6666-509"
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-							className: "hours",
-							children: "周一到周日 0:00-24:00"
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
-							className: "ghost",
-							type: "button",
-							onClick: () => {
-								setSent(false);
-								setLead(true);
-							},
-							children: "免费咨询"
-						})
-					] })]
-				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: "foot-bottom",
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "foot-meta",
-						children: [
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "© 2026 上海商米科技集团股份有限公司 版权所有" }),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
-								className: "link",
-								type: "button",
-								onClick: () => setLegal("law"),
-								children: "法律文件"
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
-								className: "link",
-								type: "button",
-								onClick: () => setLegal("privacy"),
-								children: "隐私与安全"
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "沪ICP备 16006543" }),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-								style: {
-									display: "inline-flex",
-									gap: 4,
-									alignItems: "center"
-								},
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
-									src: img("home/icon-beian.png"),
-									alt: ""
-								}), "沪公安网备 31011002003742"]
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "反诈劝阻电话：962110" })
-						]
-					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "socials",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
-							src: img("chinashop-2024/lg/wechat.png"),
-							alt: "微信"
-						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
-							src: img("chinashop-2024/lg/tiktok.png"),
-							alt: "抖音"
-						})]
-					})]
-				})]
-			})
-		}),
-		/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-			className: "floaters",
-			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
-				className: "floater primary",
-				type: "button",
-				onClick: () => {
-					setSent(false);
-					setLead(true);
-				},
-				children: "采购咨询"
-			}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
-				className: "floater",
-				type: "button",
-				onClick: () => setChat(true),
-				children: "在线客服"
-			})]
-		}),
-		lead ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-			className: "mask",
-			onClick: () => setLead(false),
-			children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "dialog",
-				onClick: (e) => e.stopPropagation(),
-				role: "dialog",
-				"aria-modal": "true",
-				"aria-labelledby": "lead-title",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
-					className: "x",
-					type: "button",
-					onClick: () => setLead(false),
-					"aria-label": "关闭",
-					children: "×"
-				}), sent ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: "ok",
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: "提交成功" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: "销售顾问将尽快与您联系。您也可以拨打 400-6666-509。" })]
-				}) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
-					onSubmit: submitLead,
-					children: [
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
-							id: "lead-title",
-							children: "采购咨询"
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-							className: "hint",
-							children: "留下信息，了解 SUNMI T3 家族配置与报价。"
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("label", {
-							htmlFor: "name",
-							children: "姓名"
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
-							id: "name",
-							value: form.name,
-							onChange: (e) => setForm({
-								...form,
-								name: e.target.value
-							})
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("label", {
-							htmlFor: "phone",
-							children: "手机号"
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
-							id: "phone",
-							inputMode: "numeric",
-							value: form.phone,
-							onChange: (e) => setForm({
-								...form,
-								phone: e.target.value
-							})
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("label", {
-							htmlFor: "company",
-							children: "公司"
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
-							id: "company",
-							value: form.company,
-							onChange: (e) => setForm({
-								...form,
-								company: e.target.value
-							})
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("label", {
-							htmlFor: "need",
-							children: "需求"
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("select", {
-							id: "need",
-							value: form.need,
-							onChange: (e) => setForm({
-								...form,
-								need: e.target.value
-							}),
-							children: [
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", { children: "采购 SUNMI T3" }),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", { children: "预约商米之家体验" }),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", { children: "了解配件与金融副屏" }),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", { children: "成为合作伙伴" })
-							]
-						}),
-						error ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-							className: "hint",
-							style: { color: "#ff6000" },
-							children: error
-						}) : null,
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
-							className: "submit",
-							type: "submit",
-							children: "提交"
-						})
-					]
-				})]
-			})
-		}) : null,
 		video ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 			className: "mask",
 			onClick: () => setVideo(false),
@@ -1510,101 +1059,6 @@ function T3Page() {
 					autoPlay: true,
 					poster: img("products/t3-family/lg/tvc-poster.jpg")
 				})]
-			})
-		}) : null,
-		chat ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-			className: "mask",
-			onClick: () => setChat(false),
-			children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "chat",
-				onClick: (e) => e.stopPropagation(),
-				role: "dialog",
-				"aria-modal": "true",
-				children: [
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("header", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: "在线客服" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
-						type: "button",
-						onClick: () => setChat(false),
-						"aria-label": "关闭客服",
-						children: "×"
-					})] }),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-						className: "msgs",
-						children: msgs.map((m, i) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-							className: `bubble ${m.from === "me" ? "me" : "bot"}`,
-							children: m.text
-						}, i))
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
-						onSubmit: sendChat,
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
-							value: draft,
-							onChange: (e) => setDraft(e.target.value),
-							placeholder: "输入问题，例如价格、配件、预约",
-							"aria-label": "客服消息"
-						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
-							type: "submit",
-							children: "发送"
-						})]
-					})
-				]
-			})
-		}) : null,
-		legal ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-			className: "mask",
-			onClick: () => setLegal(null),
-			children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "dialog",
-				onClick: (e) => e.stopPropagation(),
-				role: "dialog",
-				"aria-modal": "true",
-				children: [
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
-						className: "x",
-						type: "button",
-						onClick: () => setLegal(null),
-						"aria-label": "关闭",
-						children: "×"
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", { children: legal === "law" ? "法律文件" : "隐私与安全" }),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-						className: "hint",
-						children: legal === "law" ? "本页面产品介绍依照上市时信息制作。商米保留在不另行通知的情况下修改产品与内容的权利。演示站点中的咨询信息仅保存在您的浏览器本地。" : "商米重视用户个人信息与设备运营数据安全。本演示页的采购咨询仅写入本地浏览器，不会上传到服务器。反诈劝阻电话：962110。"
-					})
-				]
-			})
-		}) : null,
-		info ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-			className: "mask",
-			onClick: () => setInfo(null),
-			children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "dialog",
-				onClick: (e) => e.stopPropagation(),
-				role: "dialog",
-				"aria-modal": "true",
-				children: [
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
-						className: "x",
-						type: "button",
-						onClick: () => setInfo(null),
-						"aria-label": "关闭",
-						children: "×"
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", { children: info }),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-						className: "hint",
-						children: [info, " 是商米官网导航中的栏目。在这个 T3 家族产品页里，你可以继续浏览硬件细节，或直接发起采购咨询。"]
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
-						className: "submit",
-						type: "button",
-						onClick: () => {
-							setInfo(null);
-							setSent(false);
-							setLead(true);
-						},
-						children: "采购咨询"
-					})
-				]
 			})
 		}) : null
 	] });

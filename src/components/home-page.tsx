@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { Link } from "@tanstack/react-router";
 import { useChrome } from "@/components/site-chrome";
+import { SiteLink } from "@/lib/site-link";
 
 const CDN = "https://file.cdn.sunmi.com/newebsite";
 
@@ -81,9 +81,9 @@ export function HomePage() {
           <h1>{slide.title}</h1>
           <p className="lead">{slide.desc}</p>
           <div className="home-actions">
-            <Link className="ghost" to={slide.href}>
+            <SiteLink className="ghost" href={slide.href}>
               {slide.cta}
-            </Link>
+            </SiteLink>
             <button className="ghost" type="button" onClick={() => chrome.openLead(slide.title.includes("T3 家族") ? "采购 SUNMI T3" : "采购咨询")}>
               采购咨询
             </button>

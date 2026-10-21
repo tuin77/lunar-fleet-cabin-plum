@@ -31,14 +31,6 @@ const ACCESSORIES = [
   { title: "钱箱转接板", status: "已上市", file: "p9-4.jpg" },
 ];
 
-const FOOTER = [
-  { title: "硬件产品", links: ["CPad", "交互屏", "移动", "金融", "台式", "自助", "网络", "配件"] },
-  { title: "服务与支持", links: ["SUNMI Care", "保修政策", "保修查询", "服务网点"] },
-  { title: "解决方案", links: ["屏幕管理解决方案", "商捷智慧医疗解决方案", "大程序行业解决方案", "商米 SoftPOS 方案", "生态行业解决方案"] },
-  { title: "关于商米", links: ["关于我们", "联系我们", "人才招聘", "投资者关系", "可持续发展", "廉正与合规"] },
-  { title: "品牌中心", links: ["商米之家", "新闻资讯", "客户案例", "品牌资料包"] },
-];
-
 function Tile({
   src,
   video,
@@ -137,6 +129,14 @@ export function T3Page() {
           <span className="eyebrow">智能台式终端</span>
           <h1>SUNMI T3 家族</h1>
           <p className="lead">澎湃之芯，优雅之形，高端门店理想之选。</p>
+          <div className="hero-actions">
+            <a className="ghost" href="#specs">
+              技术规格
+            </a>
+            <a className="ghost" href="#scenes">
+              场景应用
+            </a>
+          </div>
           <div className="badge-row">
             <img src={img("products/t3-family/icon/os.png")} alt="SUNMI OS" />
             <img src={img("products/t3-family/icon/dmp.png")} alt="SUNMI DMP" />
@@ -607,71 +607,6 @@ export function T3Page() {
               ×
             </button>
             <video src={img("products/t3-family/video/tvc.mp4")} controls autoPlay poster={img("products/t3-family/lg/tvc-poster.jpg")} />
-          </div>
-        </div>
-      ) : null}
-
-      {chat ? (
-        <div className="mask" onClick={() => setChat(false)}>
-          <div className="chat" onClick={(e) => e.stopPropagation()} role="dialog" aria-modal="true">
-            <header>
-              <strong>在线客服</strong>
-              <button type="button" onClick={() => setChat(false)} aria-label="关闭客服">
-                ×
-              </button>
-            </header>
-            <div className="msgs">
-              {msgs.map((m, i) => (
-                <div key={i} className={`bubble ${m.from === "me" ? "me" : "bot"}`}>
-                  {m.text}
-                </div>
-              ))}
-            </div>
-            <form onSubmit={sendChat}>
-              <input value={draft} onChange={(e) => setDraft(e.target.value)} placeholder="输入问题，例如价格、配件、预约" aria-label="客服消息" />
-              <button type="submit">发送</button>
-            </form>
-          </div>
-        </div>
-      ) : null}
-
-      {legal ? (
-        <div className="mask" onClick={() => setLegal(null)}>
-          <div className="dialog" onClick={(e) => e.stopPropagation()} role="dialog" aria-modal="true">
-            <button className="x" type="button" onClick={() => setLegal(null)} aria-label="关闭">
-              ×
-            </button>
-            <h3>{legal === "law" ? "法律文件" : "隐私与安全"}</h3>
-            <p className="hint">
-              {legal === "law"
-                ? "本页面产品介绍依照上市时信息制作。商米保留在不另行通知的情况下修改产品与内容的权利。演示站点中的咨询信息仅保存在您的浏览器本地。"
-                : "商米重视用户个人信息与设备运营数据安全。本演示页的采购咨询仅写入本地浏览器，不会上传到服务器。反诈劝阻电话：962110。"}
-            </p>
-          </div>
-        </div>
-      ) : null}
-
-      {info ? (
-        <div className="mask" onClick={() => setInfo(null)}>
-          <div className="dialog" onClick={(e) => e.stopPropagation()} role="dialog" aria-modal="true">
-            <button className="x" type="button" onClick={() => setInfo(null)} aria-label="关闭">
-              ×
-            </button>
-            <h3>{info}</h3>
-            <p className="hint">
-              {info} 是商米官网导航中的栏目。在这个 T3 家族产品页里，你可以继续浏览硬件细节，或直接发起采购咨询。
-            </p>
-            <button
-              className="submit"
-              type="button"
-              onClick={() => {
-                setInfo(null);
-                setSent(false);
-                setLead(true);
-              }}
-            >
-              采购咨询
-            </button>
           </div>
         </div>
       ) : null}

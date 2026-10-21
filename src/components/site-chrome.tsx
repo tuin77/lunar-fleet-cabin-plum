@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
 import { FOOTER, HARDWARE, NAV, type ProductCard } from "@/data/catalog";
+import { SiteLink } from "@/lib/site-link";
 
 const CDN = "https://file.cdn.sunmi.com/newebsite";
 const img = (path: string) => `${CDN}/${path}`;
@@ -253,6 +254,11 @@ export function SiteChrome({ children }: { children: ReactNode }) {
           <div className="subbar">
             <div className="subbar-inner">
               <span className="sub-title">SUNMI T3 家族</span>
+              <nav className="sub-links" aria-label="本页章节">
+                <a href="#top">概览</a>
+                <a href="#scenes">场景</a>
+                <a href="#specs">技术规格</a>
+              </nav>
               <button className="ghost" type="button" onClick={() => api.openLead("采购 SUNMI T3")}>
                 采购咨询
               </button>
@@ -315,9 +321,9 @@ export function SiteChrome({ children }: { children: ReactNode }) {
                 <h2>{col.title}</h2>
                 {col.links.map((link) =>
                   link.href ? (
-                    <Link key={link.label} to={link.href}>
+                    <SiteLink key={link.label} href={link.href}>
                       {link.label}
-                    </Link>
+                    </SiteLink>
                   ) : (
                     <button key={link.label} className="link" type="button" onClick={() => api.openInfo(link.label)}>
                       {link.label}

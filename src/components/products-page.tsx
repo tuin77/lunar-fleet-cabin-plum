@@ -72,12 +72,14 @@ export function ProductsPage() {
           <p className="lead">覆盖商业平板、移动、金融、台式、自助与配件。带页面的产品可直接进入，例如 T3 家族。</p>
         </div>
       </header>
-      <nav className="product-jump wrap" aria-label="产品分类">
-        {HARDWARE.map((c) => (
-          <a key={c.id} href={`#${c.id}`}>
-            {c.label}
-          </a>
-        ))}
+      <nav className="product-jump" aria-label="产品分类">
+        <div className="wrap jump-row">
+          {HARDWARE.map((c) => (
+            <a key={c.id} href={`#${c.id}`}>
+              {c.label}
+            </a>
+          ))}
+        </div>
       </nav>
       {HARDWARE.map((c) => (
         <section key={c.id} id={c.id} className="catalog-block">

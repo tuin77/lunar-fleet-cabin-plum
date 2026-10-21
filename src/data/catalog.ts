@@ -5,7 +5,7 @@ export type ProductCard = {
   icon: string;
   hoverIcon: string;
   isNew: boolean;
-  href: string | null;
+  href: "/t3-family" | null;
 };
 
 export type ProductGroup = { label: string; items: ProductCard[] };
